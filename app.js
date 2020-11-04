@@ -121,7 +121,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     draw();
   };
+  moveRight = () => {
+    undraw();
+    const isAtRightEdge = current.some(
+      index => (currentPosition + index) % width === width - 1
+    )
 
+    console.log(isAtRightEdge);
+
+    // if(!isAtLeftEdge) currentPosition -= 1;
+    isAtRightEdge ? '' : currentPosition += 1;
+
+    if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+      currentPosition += 1;
+    }
+    draw();
+  };
 
 
   // Other shapes from Ania's repo
